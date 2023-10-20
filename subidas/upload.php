@@ -4,7 +4,7 @@ $archivo = $_FILES['miArchivo'];
 $nombre = $archivo['name'];
 $tipo = $archivo['type'];
 
-var_dump($archivo);
+//var_dump($archivo);
 
 if($tipo  == "image/jpg" || $tipo  == "image/jpeg" || $tipo  == "image/png" || $tipo  == "image/gif"){
     if(!is_dir('images')){
