@@ -11,3 +11,6 @@
 18.- Listar los clientes que han hecho algún encargo del coche Mercedes Ranchera
 */
 
+SELECT * FROM clientes where id in 
+(select cliente_id from encargos WHERE coche_id in 
+(select id from coches where modelo like 'Mercedes ranchera%'));
