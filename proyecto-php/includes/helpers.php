@@ -13,3 +13,13 @@ function mostrarError($errores, $campo){
     $_SESSION['errores'] = null;
     unset($_SESSION['errores']);
 }
+
+function conseguirCategorias($conexion){
+    $sql = "SELECT * FROM categorias ORDER BY id ASC;";
+    $categorias = mysqli_query($conexion, $sql);
+    $result = array();
+    if($categorias && mysqli_num_rows($categorias) >= 1):
+        $result = $categorias;
+    endif;
+    return $result;
+}
