@@ -3,13 +3,18 @@
 if(isset($_POST)):
     // Conexión a la BBDD
     require_once 'includes/conexion.php';
-    session_start();
+
+    // Iniciar sesión
+    if(!isset($_SESSION)):
+       session_start();     
+    endif;
+    
     
     // Recoger los valores del formulari ode registro
-    $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
-    $apellidos =isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
-    $email = isset($_POST['email']) ? $_POST['email'] : false;
-    $password = isset($_POST['password']) ? $_POST['password'] : false;
+    $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db,$_POST['nombre']) : false;
+    $apellidos =isset($_POST['apellidos']) ? mysqli_real_escape_string($db,$_POST['apellidos']) : false;
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($db,trim($_POST['email'])) : false;
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($db,$_POST['password']) : false;
     
     // Array de errores
     $errores = array();
@@ -40,7 +45,7 @@ if(isset($_POST)):
     endif;
     
     //  Validar la contraseña
-        if(!empty($password)):
+    if(!empty($password)):
         $password_validado = true;
     else:
         $password_validado = false;
