@@ -15,7 +15,7 @@
         </div>    
     <?php endif; ?>
     
-    <?php if(isset($_SESSION['usuario'])):?>
+    <?php if(!isset($_SESSION['usuario'])):?>
     <div id="login" class="bloque">
         <h3>Identifícate</h3>
         
@@ -36,6 +36,7 @@
             <input type="submit" value="Entrar" />
         </form>
     </div>
+    
     <div id="register" class="bloque">
         <h3>Regístrate</h3>
         

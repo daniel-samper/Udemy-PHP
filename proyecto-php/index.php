@@ -9,14 +9,14 @@
                 <?php
                     $entradas = conseguirUltimasEntradas($db);
                     if(!empty($entradas)):
-                        while($entradas = mysqli_fetch_assoc($entradas)):
+                        while($entrada = mysqli_fetch_assoc($entradas)):
                 ?>
                 <article class="entrada">
                     <a href="">
-                        <h2><?=$entradas['titulo']?></h2>
-                        <span class="fecha"><?=$entrada['categoria'].' | '.$entradas['fecha']?></span>
+                        <h2><?=$entrada['titulo']?></h2>
+                        <span class="fecha"><?=$entrada['categoria'].' | '.$entrada['fecha']?></span>
                         <p>
-                           <?= substr($entradas['descripcion'], 0, 180)."..."?>
+                           <?= substr($entrada['descripcion'], 0, 180)."..."?>
                         </p>
                     </a>
                 </article>
@@ -28,6 +28,7 @@
                               
                  <div id="ver-todas">
                     <a href="">Ver todas las entradas</a>
+                    <a href="cerrar.php">Cerrar Sesión</a>
                 </div>
                 
             </div><!--Fin principal-->
