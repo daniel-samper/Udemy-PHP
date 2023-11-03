@@ -28,7 +28,6 @@
                               
                  <div id="ver-todas">
                     <a href="">Ver todas las entradas</a>
-                    <a href="cerrar.php">Cerrar Sesión</a>
                 </div>
                 
             </div><!--Fin principal-->
