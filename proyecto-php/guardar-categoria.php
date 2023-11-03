@@ -4,7 +4,7 @@ if(isset($_POST)):
     // Conexión a la BBDD
     require_once 'includes/conexion.php';
 
-    $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($dv, $_POST['nombre']) : false;
+    $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db, $_POST['nombre']) : false;
     
     // Array de errores
     $errores = array();
