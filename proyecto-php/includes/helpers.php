@@ -8,10 +8,40 @@ function mostrarError($errores, $campo){
     return $alerta;
 }
 
+// Optimizada
+/*
+ function borrarErrores(){
+    $borrado = false; 
+    
+    if(isset($_SESSION['errores'])):
+        $_SESSION['errores'] = null;
+        $borrado = true;
+    endif;
+    
+    if(isset($_SESSION['errores_entrada'])):
+        $_SESSION['errores_entrada'] = null;
+        $borrado = true;
+    endif;
+    
+    if(isset($_SESSION['completado'])):
+        $_SESSION['completado'] = null;
+        $borrado = true;
+    endif;
+
+    
+    return $borrado;;
+}*/
 
  function borrarErrores(){
     $_SESSION['errores'] = null;
     unset($_SESSION['errores']);
+    
+    $_SESSION['errores_entrada'] = null;
+    //unset($_SESSION['errores_entrada']);
+    
+    $_SESSION['completado'] = null;
+    unset($_SESSION['completado']);
+    
 }
 
 function conseguirCategorias($conexion){

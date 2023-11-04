@@ -3,18 +3,11 @@
 if(isset($_POST)):
     // Conexión a la BBDD
     require_once 'includes/conexion.php';
-
-    // Iniciar sesión
-    if(!isset($_SESSION)):
-       session_start();     
-    endif;
-    
-    
-    // Recoger los valores del formulario de registro
+ 
+    // Recoger los valores del formulario de actualización
     $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db,$_POST['nombre']) : false;
     $apellidos =isset($_POST['apellidos']) ? mysqli_real_escape_string($db,$_POST['apellidos']) : false;
     $email = isset($_POST['email']) ? mysqli_real_escape_string($db,trim($_POST['email'])) : false;
-    $password = isset($_POST['password']) ? mysqli_real_escape_string($db,$_POST['password']) : false;
     
     // Array de errores
     $errores = array();
@@ -42,37 +35,43 @@ if(isset($_POST)):
     else:
         $email_validado = false;
         $errores['email']="El email no es válido";
-    endif;
-    
-    //  Validar la contraseña
-    if(!empty($password)):
-        $password_validado = true;
-    else:
-        $password_validado = false;
-        $errores['password']="La contraseña está vacía";
-    endif;
-    
+    endif;   
+   
     $guardar_usuario = false;
     if(count($errores) == 0):
+        $usuario = $_SESSION['usuario'];
         $guardar_usuario = true;
     
-        //Cifrar la contraseña
-        $password_segura = password_hash($password, PASSWORD_BCRYPT, ['cost'=>4]);
+        // Comprobar si el email ya existe
+        $sql = "SELECT id, email FROM usuarios WHERE email = '$email' ";
+        $isset_email = mysqli_query($db,$sql); 
+        $isset_user = mysqli_fetch_assoc($isset_email); 
         
-    
-        // Insertar usuario en la tabla de usuarios de la BBDD
-        $sql = "INSERT INTO usuarios VALUES(null, '$nombre', '$apellidos', '$email', '$password_segura', CURDATE())";
-        $guardar = mysqli_query($db, $sql);
-        
-        if($guardar):
-            $_SESSION['completado'] = "El registro se ha completado con éxito";
+        if($isset_user['id'] == $usuario['id'] || empty($isset_user)):
+        // Actualizar usuario en la tabla de usuarios de la BBDD
+            
+            $sql = "UPDATE usuarios SET ".
+                    "nombre = '$nombre',".
+                    "apellidos = '$apellidos',".
+                    "email  = '$email'".
+                    "WHERE id = ".$usuario['id'];
+
+            $guardar = mysqli_query($db, $sql);
+
+            if($guardar):
+                $_SESSION['usuario']['nombre'] = $nombre;
+                $_SESSION['usuario']['apellidos'] = $apellidos;
+                $_SESSION['usuario']['email'] = $email;
+                $_SESSION['completado'] = "Tus datos se han actualizado con éxito";
+            else:
+                $_SESSION['errores']['general']="Fallo al actualizar el usuario";
+            endif;
         else:
-            $_SESSION['errores']['general']="Fallo al guardar el usuario";
-        endif;
-    
+           $_SESSION['errores']['general']="El usuario ya existe"; 
+        endif;    
     else:
         $_SESSION['errores'] = $errores;
        
     endif;
 endif;   
-header ('Location:  index.php');
+header ('Location:  mis-datos.php');
