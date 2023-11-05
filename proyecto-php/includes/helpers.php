@@ -70,3 +70,12 @@ function conseguirEntradas($conexion, $limit = null){
     endif;
     return $entradas;
 }
+function conseguirCategoria($conexion, $id){
+    $sql = "SELECT * FROM categorias WHERE id = $id;";
+    $categorias = mysqli_query($conexion, $sql);
+    $result = array();
+    if($categorias && mysqli_num_rows($categorias) >= 1):
+        $result = mysqli_fetch_assoc($categorias);
+    endif;
+    return $result;
+}
