@@ -54,10 +54,17 @@ function conseguirCategorias($conexion){
     return $result;
 }
  
-function conseguirEntradas($conexion, $limit = null){
+function conseguirEntradas($conexion, $limit = null, $categoria = null){
     $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e ".
-            "INNER JOIN categorias c ON e.categoria_id = c.id ".
-            "ORDER BY e.id DESC ";
+            "INNER JOIN categorias c ON e.categoria_id = c.id ";
+            
+    
+    if(!empty($categoria)):
+        $sql  .= "WHERE e.categoria_id = $categoria ";
+    endif;
+    
+    $sql .= "ORDER BY e.id DESC ";
+    
     if($limit):
         $sql .= "LIMIT 4";
     endif;
