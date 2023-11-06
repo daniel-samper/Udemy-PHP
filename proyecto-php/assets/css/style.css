@@ -171,6 +171,7 @@ input[type="submit"],
 }
 
 .boton{
+    color:white !important;
     text-align: center;
     width: 130px;
 }
@@ -180,6 +181,7 @@ input[type="submit"],
     border-color: green;
 }
 .boton-naranja{
+    
     background: orange;
     border-color: #bd7d08;
 }
