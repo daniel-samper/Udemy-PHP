@@ -71,10 +71,24 @@ function conseguirEntrada($conexion ,$id){
 }
 
 
-function conseguirEntradas($conexion, $limit = null, $categoria = null){
+function conseguirCategoria($conexion, $id){
+    $sql = "SELECT * FROM categorias WHERE id = $id;";
+    $categorias = mysqli_query($conexion, $sql);
+    $result = array();
+    if($categorias && mysqli_num_rows($categorias) >= 1):
+        $result = mysqli_fetch_assoc($categorias);
+    endif;
+    return $result;
+}
+
+function conseguirEntradas($conexion, $limit = null, $categoria = null, $busqueda = null){
     $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e ".
             "INNER JOIN categorias c ON e.categoria_id = c.id ";
             
+    
+    if(!empty($busqueda)):
+        $sql  .= "WHERE e.titulo LIKE '%$busqueda%' ";
+    endif;
     
     if(!empty($categoria)):
         $sql  .= "WHERE e.categoria_id = $categoria ";
@@ -93,13 +107,4 @@ function conseguirEntradas($conexion, $limit = null, $categoria = null){
         $resultado = $entradas;
     endif;
     return $entradas;
-}
-function conseguirCategoria($conexion, $id){
-    $sql = "SELECT * FROM categorias WHERE id = $id;";
-    $categorias = mysqli_query($conexion, $sql);
-    $result = array();
-    if($categorias && mysqli_num_rows($categorias) >= 1):
-        $result = mysqli_fetch_assoc($categorias);
-    endif;
-    return $result;
 }
