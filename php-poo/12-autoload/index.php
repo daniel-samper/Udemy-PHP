@@ -25,7 +25,7 @@ use MisClases\Entrada;
 use PanelAdministrador\Usuario as UsuarioAdmin;
 
 class Principal{
-    public $udustio;
+    public $usuario;
     public $categoria;
     public $entrada;
     
@@ -34,11 +34,57 @@ class Principal{
         $this->categoria = new Categoria();
         $this->entrada = new Entrada();
     }
+    
+    public function getUsuario() {
+        return $this->usuario;
+    }
+
+    public function getCategoria() {
+        return $this->categoria;
+    }
+
+    public function getEntrada() {
+        return $this->entrada;
+    }
+
+    public function setUsuario($usuario): void {
+        $this->usuario = $usuario;
+    }
+
+    public function setCategoria($categoria): void {
+        $this->categoria = $categoria;
+    }
+
+    public function setEntrada($entrada): void {
+        $this->entrada = $entrada;
+    }
+
+
+
+
 }
 // Objeto Principal
 $principal = new Principal();
 var_dump($principal->usuario);
+echo"<br>";
+
+$metodos = (get_class_methods($principal));
+
+$busqueda = array_search('setEntrada', $metodos);
+echo "<br>";
+var_dump($busqueda);
 
 // Otro paquete
 $usuario = new UsuarioAdmin;
+echo "<br>";
 var_dump($usuario);
+
+
+// Comprobar si existe una clase
+$clase = class_exists('MisClases\usuario');
+
+if($clase):
+    echo "<h1> La clase SÍ existe";
+else:
+    echo "<h1> La clase NO existe";
+endif;
