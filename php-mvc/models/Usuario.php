@@ -1,5 +1,4 @@
-<?php
-require_once 'ModeloBase.php';
+<?php require_once 'ModeloBase.php';
 
 class Usuario extends ModeloBase{
     public $nombre;

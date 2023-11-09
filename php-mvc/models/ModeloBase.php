@@ -9,9 +9,9 @@ class ModeloBase{
     public function __construct() {
         $this->db = Database::conectar();
     }
-    public function conseguirTodos() {
-        var_dump($this->db);
-        return "Sacando todos los usuarios";
+    public function conseguirTodos($tabla) {
+        $query = $this->db->query("SELECT * FROM $tabla ORDER  BY id DESC");
+        return $query;
     }
     
     
