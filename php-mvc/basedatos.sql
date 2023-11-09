@@ -21,5 +21,5 @@ titulo          varchar(255) not null,
 descripcion     MEDIUMTEXT,
 fecha           date not null,
 CONSTRAINT pk_entradas PRIMARY KEY(id),
-CONSTRAINT fk_entrada_usuario FOREIGN KEY(usuario_id) REFERENCES usuarios(id),
+CONSTRAINT fk_entrada_usuario FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
 );
