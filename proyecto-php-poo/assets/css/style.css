@@ -10,8 +10,6 @@ body{
     background: url('../img/bg.png');
 }
 
-
-
 a{
     color: #01B1EA;
 }
@@ -24,7 +22,7 @@ a:hover{
     color: #555555;
 }
 /*CONTAINER*/
-#conainer{
+#container{
     width: 80%;
     margin: 0px auto;
     box-shadow: 0px 0px 10px gray;
@@ -60,12 +58,12 @@ a:hover{
     text-decoration: none;
     margin-top: 18px;
     margin-left: 20px;
-    text-shadow: 0px 2px 12px #222222;
+    text-shadow: 0px 2px 1px #222222;
     transition: all 300ms;    
 }
 
 #logo a:hover{
-    text-shadow: 0px 2px 12px #222222, 0px 0px 4px #01B1EA;
+    text-shadow: 0px 2px 1px #222222, 0px 0px 4px #01B1EA;
 }
 
 /*MENU*/
@@ -142,7 +140,28 @@ a:hover{
     border-bottom: 2px solid #01B1EA;
     
 }
+#lateral ul{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#lateral ul li{
+    list-style: square;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 /*FORMS*/
+label, 
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select{
+    display: block;
+    width: 95%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -154,9 +173,34 @@ select{
     color: gray;
     transition: all 300ms;
 }
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus{
+    border: 1px solid #1579B5;
+    color: black;
+}    
 
-
-
+input[type="button"],
+input[type="submit"],
+button{
+    display: block;
+    border-radius: 2px;
+    width: auto;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    background: #2979CD;
+    border: 1px solid #11608E;
+    cursor: pointer;
+}
+label,
+input[type="button"],
+input[type="submit"],
+button{
+    display: block;
+    margin-top: 10px;
+}
 
 /*PRODUCTOS*/
 .product img{

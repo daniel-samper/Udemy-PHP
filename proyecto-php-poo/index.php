@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Tienda de Camisetas</title>
-        <link rel="stylesheet" href="assets/css/styles.css" />
+        <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
         <div id="container">
@@ -12,7 +12,7 @@
                 <div id="logo">
                     <img src="assets/img/camiseta.png" alt="Camiseta Logo" />
                     <a href="index.php">
-                        Tienda de Canusetas
+                        Tienda de Camisetas
                     </a>
                 </div>
             </header>
@@ -54,9 +54,12 @@
                             <input type="password" name="password">
                             <input type="submit" value="Enviar">
                         </form>
-                        <a href="#">Mis pedidos</a>
-                        <a href="#">Gestionar pedidos</a>
-                        <a href="#">Gestionar categorias</a>                          
+                        <ul>
+                            <li><a href="#">Mis pedidos</a></li>
+                            <li><a href="#">Gestionar pedidos</a></li>
+                            <li><a href="#">Gestionar categorias</a></li>
+                        </ul>
+                                                
                     </div>                
                 </aside>
 
@@ -86,7 +89,7 @@
 
             <!-- PIE DE PAGINA -->
             <footer id="footer">
-                <p>Desarrollado por Daniel Samper WEB &copy; <?=date('year')?></p>
+                <p>Desarrollado por Daniel Samper WEB &copy;   <?=date("Y")?></p>
             </footer>
         </div>    
     </body>
