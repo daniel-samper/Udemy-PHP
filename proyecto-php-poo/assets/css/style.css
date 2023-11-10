@@ -66,7 +66,12 @@ a:hover{
 }
 
 /*MENU*/
+#menu{
+   background: 222;
+   
+}
 
+/*PRODUCTOS*/
 .product img{
     width: 100px;
 }
