@@ -1,0 +1,7 @@
+<?php
+
+class productoController{
+    public function index() {
+        echo "controlador productos, Acción index";
+    }
+}
