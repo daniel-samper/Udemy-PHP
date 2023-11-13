@@ -21,11 +21,15 @@ class usuarioController{
         
             $save = $usuario->save();
             if($save):
-                echo "Registro completado";
+                $_SESSION['register'] = "complete";
             else:
-                echo "Registro fallido";
+                $_SESSION['register'] = "failed";
             endif;
         
+        else:
+            $_SESSION['register'] = "failed";
+        
         endif;
+        header("Location:".base_url.'usuario/registro');
     }
 }
