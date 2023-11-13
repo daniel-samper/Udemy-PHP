@@ -1,6 +1,6 @@
 <h1>Registro de usuarios</h1>
 
-<form action="index-php?controller=usuario&action=save" method="POST">
+<form action="index.php?controller=usuario&action=save" method="POST">
     
     <label for="nombre">Nombre</label>
     <input type="text" name="nombre" required />
