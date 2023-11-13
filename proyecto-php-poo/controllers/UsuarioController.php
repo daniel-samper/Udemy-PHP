@@ -1,4 +1,5 @@
 <?php
+require_once 'models/usuario.php';
 
 class usuarioController{
     
@@ -11,6 +12,20 @@ class usuarioController{
     }
     
     public function save() {
-        echo "controlador Usuarios, Acción index";
+        if(isset($_POST)):
+            $usuario = new Usuario();
+            $usuario->setNombre($_POST['nombre']);
+            $usuario->setApellidos($_POST['apellidos']);
+             $usuario->setEmail($_POST['email']);
+             $usuario->setPassword($_POST['password']);
+        
+            $save = $usuario->save();
+            if($save):
+                echo "Registro completado";
+            else:
+                echo "Registro fallido";
+            endif;
+        
+        endif;
     }
 }

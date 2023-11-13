@@ -19,19 +19,19 @@ class usuario{
     }
 
     public function getNombre() {
-        return $this->db->real_escape_string($this->nombre);
+        return $this->nombre;
     }
 
     public function getApellidos() {
-        return $this->db->real_escape_string($this->apellidos);
+        return $this->apellidos;
     }
 
     public function getEmail() {
-        return $this->db->real_escape_string($this->email);
+        return $this->email;
     }
 
     public function getPassword() {
-        return password_hash($this->db->real_escape_string($this->password),PASSWORD_BCRYPT, ['cost' => 4]);
+        return $this->password;
     }
 
     public function getRol() {
@@ -47,19 +47,19 @@ class usuario{
     }
 
     public function setNombre($nombre): void {
-        $this->nombre = $nombre;
+        $this->nombre = $this->db->real_escape_string($nombre);
     }
 
     public function setApellidos($apellidos): void {
-        $this->apellidos = $apellidos;
+        $this->apellidos = $this->db->real_escape_string($apellidos);
     }
 
     public function setEmail($email): void {
-        $this->email = $email;
+        $this->email = $this->db->real_escape_string($email);
     }
 
     public function setPassword($password): void {
-        $this->password = $password;
+        $this->password = password_hash($this->db->real_escape_string($password),PASSWORD_BCRYPT, ['cost' => 4]);
     }
 
     public function setRol($rol): void {
@@ -73,5 +73,11 @@ class usuario{
     public function save() {
         $sql = "INSERT INTO usuarios VALUES(NULL,'{$this->getNombre()}','{$this->getApellidos()}','{$this->getEmail()}','{$this->getPassword()}','user',null);";
         $save = $this->db->query($sql);
+        
+        $result = false;
+        if($save):
+            $result = true;
+        endif;
+        return $result;
     }
 }
