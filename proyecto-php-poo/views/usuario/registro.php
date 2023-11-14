@@ -1,9 +1,9 @@
 <h1>Registro de usuarios</h1>
 
 <?php if(isset($_SESSION['register']) && $_SESSION['register'] == 'cimplete'): ?>
-    <strong>Registro completado con éxito</strong>
+<strong class="alerta-green">Registro completado con éxito</strong>
 <?php elseif(isset($_SESSION['register']) && $_SESSION['register'] == 'failed'): ?>
-    <strong>Registro fallido</strong> 
+<strong class="alert_red">Registro fallido; introduce bién los datos.</strong> 
 <?php endif; ?>
     
 <?php Utils::deleteSession('register'); ?> 
