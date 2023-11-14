@@ -66,6 +66,18 @@ class usuarioController{
             endif;
             
         endif;
-        header("Location".base_url);
+        header("Location:".base_url);
     }
-}
+    
+    public function logout() {
+        if(isset($_SESSION['identity'])):
+            unset($_SESSION['identity']);
+        endif;
+        
+        if(isset($_SESSION['admin'])):
+            unset($_SESSION['admin']);
+        endif;
+        
+        header("Location:".base_url);
+    }
+} // Fin clase
