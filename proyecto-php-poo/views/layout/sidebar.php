@@ -7,7 +7,7 @@
         <form action="<?=base_url?>usuario/login" method="post">
             <label for="email">Email</label>
             <input type="email" name="email">
-            <label for="password">Pasaword</label>
+            <label for="password">Password</label>
             <input type="password" name="password">
             <input type="submit" value="Enviar">
         </form>
@@ -19,7 +19,7 @@
         <ul>
             <?php if(isset($_SESSION['admin'])): ?>
                 <li><a href="<?=base_url?>categoria/index">Gestionar categorías</a></li>
-                <li><a href="<?=base_url?>">Gestionar productos</a></li>
+                <li><a href="<?=base_url?>producto/gestion">Gestionar productos</a></li>
                 <li><a href="#">Gestionar pedidos</a></li>
                 
             <?php endif; ?>
