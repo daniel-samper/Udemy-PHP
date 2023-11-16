@@ -71,11 +71,13 @@ class usuarioController{
     
     public function logout() {
         if(isset($_SESSION['identity'])):
-            unset($_SESSION['identity']);
+            //unset($_SESSION['identity']);
+            session_destroy();
         endif;
         
         if(isset($_SESSION['admin'])):
-            unset($_SESSION['admin']);
+            //unset($_SESSION['admin']);
+            session_destroy();
         endif;
         
         header("Location:".base_url);
