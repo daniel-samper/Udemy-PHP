@@ -46,14 +46,14 @@ class productoController{
                 $filename = $file['name'];
                 $mimetype = $file['type'];
                 
-                if($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png" || $mimetype == "image/gif"):
+                if($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/png' || $mimetype == 'image/gif'):
                     
                     if(!is_dir('uploads/images')):
-                        mkdir ('uploads/images', 0777, true);
+                        mkdir('uploads/images', 0777, true);
                     endif;
                     
-                move_uploaded_file($file['tmp_name'], 'uploads/images/'.$filename);
-                $producto->setImagen($filename);
+                    move_uploaded_file($file['tmp_name'], 'uploads/images/'.$filename);
+                    $producto->setImagen($filename);
                     
                 endif;
                 $save = $producto->save ();
