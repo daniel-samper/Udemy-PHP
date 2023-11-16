@@ -1,7 +1,7 @@
 <h1>Crear nuevos productos</h1>
 
 <div class="form_container">
-    <form action="<?= base_url ?>producto/save" method="POST">
+    <form action="<?=base_url?>producto/save" method="POST">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" />
 
@@ -24,8 +24,8 @@
             <?php endwhile; ?>
         </select>
 
-        <label for="iamgen">Imagen</label>
-        <input type="file" name="nombre" />
+        <label for="imagen">Imagen</label>
+        <input type="file" name="imagen" />
         
         <input type="submit" value="Guardar" />
         
