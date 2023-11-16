@@ -1,3 +1,4 @@
+
 <?php
 
 class Producto{
@@ -107,6 +108,17 @@ class Producto{
         
         $result = false;
         if($save):
+            $result = true;
+        endif;
+        return $result;
+    }
+    
+    public function delete() {
+        $sql = "DELETE FROM productos WHERE id={$this->id}";
+        $delete = $this->db->query($sql);
+        
+        $result = false;
+        if($delete):
             $result = true;
         endif;
         return $result;

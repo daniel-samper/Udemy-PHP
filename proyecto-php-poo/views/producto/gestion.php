@@ -8,6 +8,13 @@
     <strong class="alerta-red">El producto NO se ha creado correctamente</strong>
 <?php endif; ?>
 <?php Utils::deleteSession('producto');?>    
+    
+<?php if(isset($_SESSION['delete']) && $_SESSION['delete'] == 'complete'):?>
+    <strong class="alerta-green">El producto se ha borrado correctamente</strong>
+<?php elseif(isset($_SESSION['delete']) && $_SESSION['delete'] == 'failed'):?>
+    <strong class="alerta-red">El producto NO se ha borrado correctamente</strong>
+<?php endif; ?>
+<?php Utils::deleteSession('delete');?>    
 
 <table>
     <tr>
@@ -24,8 +31,8 @@
         <td><?=$pro->precio;?></td>   
         <td><?=$pro->stock;?></td>   
         <td>
-            <a href="<?=base_url?>producto/editar?id=<?=$pro->id?>"" class="button button-gestion">Editar</a>
-            <a href="<?=base_url?>producto/eliminar?id=<?=$pro->id?>"" class="button button-gestion button-red">Eliminar</a>
+            <a href="<?=base_url?>producto/editar&id=<?=$pro->id?>"" class="button button-gestion">Editar</a>
+            <a href="<?=base_url?>producto/eliminar&id=<?=$pro->id?>"" class="button button-gestion button-red">Eliminar</a>
         </td>
     </tr>
     
