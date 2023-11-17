@@ -32,8 +32,8 @@
         </select>
 
         <label for="imagen">Imagen</label>
-        <?php if(isset($pro) && is_object($pro) && !empty($pto->imagen)): ?> 
-            <img serc="<?=base_url?>/uploads/<?=$pro->imagen?>"/>
+        <?php if(isset($pro) && is_object($pro) && !empty($pro->imagen)): ?> 
+            <img src="<?=base_url?>uploads/images/<?=$pro->imagen?>" class="thumb"/>
         <?php endif; ?>    
         <input type="file" name="imagen" />
         
