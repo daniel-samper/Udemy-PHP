@@ -58,7 +58,7 @@ class productoController{
                     endif; 
                 endif;
                 
-                if($_GRT['id']):
+                if($_GET['id']):
                     $id = $_GET['id'];
                     $producto->setId($id);
                     

@@ -118,10 +118,10 @@ class Producto{
     }
     
     public function edit() {
-        $sql = "UPDATE productos SET nombre='{$this->getNombre()}',descripcion='{$this->getDescripcion()}',precio={$this->getPrecio()},srock={$this->getStock()}, categoria_id={$this->getCategoria_id()} ";
+        $sql = "UPDATE productos SET nombre='{$this->getNombre()}',descripcion='{$this->getDescripcion()}',precio={$this->getPrecio()},stock={$this->getStock()}, categoria_id={$this->getCategoria_id()}";
         
-        if($this->getImagen()!=null):
-            $sql .= ", imagen='{$this->getImagen()}";
+        if($this->getImagen()!= null):
+            $sql .= ", imagen='{$this->getImagen()}'";
         endif;
         
         
@@ -134,6 +134,7 @@ class Producto{
         if($save):
             $result = true;
         endif;
+        
         return $result;
     }
     

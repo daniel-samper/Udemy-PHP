@@ -1,9 +1,10 @@
-<?php if(isset($edit) && isset($pro)): is_object($pro)?>
+
+<?php if(isset($edit) && isset($pro) && is_object($pro)): ?>
     <h1>Editar productos <?=$pro->nombre?></h1>
-    <?php $url_action = base_url."producto/save&id=".$pro->id;?>
+    <?php $url_action = base_url."producto/save&id=".$pro->id; ?>
 <?php else: ?>
     <h1>Crear nuevos productos</h1>
-    <?php $url_action = base_url."producto/save";?>    
+    <?php $url_action = base_url."producto/save"; ?>    
 <?php endif; ?>
 
 <div class="form_container">
@@ -16,16 +17,16 @@
         <textarea name="descripcion"><?=isset($pro) && is_object($pro) ? $pro->descripcion : '';?></textarea>
 
         <label for="precio">Precio</label>
-        <input type="text" name="precio"  value="<?=isset($pro) && is_object($pro) ? $pro->precio : '';?>"/>
+        <input type="text" name="precio"  value="<?=isset($pro) && is_object($pro) ? $pro->precio : ''; ?>" />
 
         <label for="stock">Stock</label>
-        <input type="number" name="stock"  value="<?=isset($pro) && is_object($pro) ? $pro->stock : '';?>"/>
+        <input type="number" name="stock" value="<?=isset($pro) && is_object($pro) ? $pro->stock : ''; ?>" />
 
         <label for="categoria">Categoria</label>
         <?php $categorias = Utils::showCategorias(); ?>
         <select name="categoria">
             <?php while ($cat = $categorias->fetch_object()): ?>
-                <option value="<?= $cat->id ?>"  value="<?=isset($pro) && is_object($pro) && $cat->id  == $pro->categoria_id ? 'selected' : '';?>">
+                <option value="<?= $cat->id ?>"  <?=isset($pro) && is_object($pro) && $cat->id  == $pro->categoria_id ? 'selected' : '';?>>
                     <?= $cat->nombre ?>
                 </option>
             <?php endwhile; ?>
@@ -37,9 +38,6 @@
         <?php endif; ?>    
         <input type="file" name="imagen" />
         
-        <input type="submit" value="Guardar" />
-        
-        
-        
+        <input type="submit" value="Guardar" />  
     </form>
 </div>
