@@ -11,6 +11,19 @@ class productoController{
         
     }
     
+    public function ver() {
+        if (isset($_GET['id'])):
+            $id = $_GET['id'];
+
+            $producto = new Producto();
+            $producto->setId($id);
+
+            $pro = $producto->getOne();
+
+        endif;
+        require_once 'views/producto/ver.php';
+    }
+    
     public function gestion() {
         Utils::isAdmin();
         
