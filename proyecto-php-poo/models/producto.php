@@ -94,6 +94,10 @@ class Producto{
         $productos = $this->db->query("SELECT * FROM productos ORDER BY id DESC");
         return $productos;
     }
+    public function getOne() {
+        $producto = $this->db->query("SELECT * FROM productos WHERE id = {$this->getId()}");
+        return $producto->fetch_object();
+    }
     
     public function save() {
         $sql = "INSERT INTO productos VALUES(NULL,'{$this->getCategoria_id()}','{$this->getNombre()}','{$this->getDescripcion()}',{$this->getPrecio()},{$this->getStock()},null,CURDATE(),'{$this->getImagen()}');";
