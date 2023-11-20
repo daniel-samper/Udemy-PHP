@@ -1,8 +1,13 @@
 <?php
 require_once 'models/producto.php';
-class carritoController{
+
+class CarritoController{
+    
     public function index() {
-        echo "controlador pedidos, Acción index";
+        
+        $carrito = $_SESSION['carrito'];
+        
+        require_once 'views/carrito/index.php';
     }
     
     public function add() {
@@ -11,12 +16,13 @@ class carritoController{
         else:
             header('Location:'.base_url);
         endif;
-        if($_SESSION['carrito']):
+        
+        if(isset($_SESSION['carrito'])):
             $counter = 0;
             foreach ($_SESSION['carrito'] as $indice => $elemento):
                 if($elemento['id_producto'] == $producto_id):
                     $_SESSION['carrito'][$indice]['unidades']++;
-                $counter++;
+                    $counter++;
                 endif;
             endforeach;
         endif;
@@ -29,7 +35,7 @@ class carritoController{
 
             // Añadir al carrito
             if(is_object($producto)):
-                $_SESSION['carrito'][] = array(
+                $_SESSION['carrito'][$producto->id] = array(
                 "id_producto" => $producto->id,
                 "precio" => $producto->precio,
                 "unidades" => 1,
@@ -37,7 +43,7 @@ class carritoController{
                 );
             endif;
         endif;    
-        header("Location".base_url."carrito/index");
+        header("Location:".base_url."carrito/index");
     }
     
     public function remove() {
