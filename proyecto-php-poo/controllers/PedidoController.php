@@ -27,7 +27,10 @@ class pedidoController{
                 
                 $save = $pedido->save();
                 
-                if($save):
+                // Guardar línea pedido
+                $save_linea = $pedido->save_linea();
+                
+                if($save && $save_linea):
                     $_SESSION['pedido'] = 'complete';
                 else:
                     $_SESSION['pedido'] = 'failed';
@@ -36,12 +39,16 @@ class pedidoController{
             else:
                 $_SESSION['pedido'] = 'failed';
             endif;
-            
+            header("Location:".base_url.'pedido/confirmado');
             
         else:
             // Redirigir al index
             header("Location:".base_url);
         endif;
+    }
+    public function confirmado() {
+        
+        require_once 'views/pedido/confirmado.php';
     }
     
     
