@@ -79,7 +79,7 @@ class pedidoController{
             
             require_once 'views/pedido/detalle.php';
         else:
-        header('Location:'.base_url'pedidos/mis_pedidos')
+        header('Location:'.base_url.'pedidos/mis_pedidos');
         endif;
         
         
