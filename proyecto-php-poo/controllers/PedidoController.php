@@ -72,5 +72,16 @@ class pedidoController{
         
         require_once 'views/pedido/mis_pedidos.php';
     }
-    
+    public function detalle() {
+        Utils::isIdentity();
+        
+        if(isset($_GET['id'])):
+            
+            require_once 'views/pedido/detalle.php';
+        else:
+        header('Location:'.base_url'pedidos/mis_pedidos')
+        endif;
+        
+        
+    }
 }
