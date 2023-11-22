@@ -166,7 +166,7 @@ class Pedido{
         return $result;
     }
     
-    public function updateOne() {
+    public function edit() {
         $sql = "UPDATE pedidos SET estado='{$this->getEstado()}'";
         $sql .= " WHERE id={$this->getId()};";
         

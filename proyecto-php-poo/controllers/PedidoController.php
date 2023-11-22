@@ -118,9 +118,9 @@ class pedidoController{
             $pedido->setEstado($estado);
             $pedido->edit();
             
-            header("Location".base_url.'pedido/detalle&id='.$id);
+            header("Location:".base_url.'pedido/detalle&id='.$id);
         }else{
-            header("Location".base_url);
+            header("Location:".base_url);
         }
     }
 }
