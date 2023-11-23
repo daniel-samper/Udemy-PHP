@@ -51,12 +51,18 @@ class CarritoController{
         header("Location:".base_url."carrito/index");
     }
     
-    public function remove() {
-        
+    public function delete() {
+        if(isset($_GET['index'])):
+            $index = $_GET['index'];
+            unset($_SESSION['carrito'][$index]);
+            
+        endif;
+        header("Location:".base_url."carrito/index");
     }
     
     public function delete_all() {
         unset($_SESSION['carrito']);
+        header("Location:".base_url."carrito/index");
     }
     
     
